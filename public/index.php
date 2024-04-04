@@ -7,6 +7,7 @@ class App
     public $URL;
     public $controller = 'Home';
     public $method = 'index';
+    public $params = [];
 
 
     public function __construct($URL)
@@ -44,6 +45,9 @@ class App
             // Récuperer la méthode associée à l'URL
             $this->method = $this->URL[1];
 
+            // Récuperer les paramètres de l'URL
+            $this->params = array_slice($this->URL, 2);
+
             // Si la méthode n'existe pas, rediriger vers la méthode par défaut (index si c'est home, all si c'est les autres)
             if (!in_array($this->method, $this->controller->ALLOWED_METHODS)) {
                 if ($this->URL[0] == 'home') {
@@ -54,9 +58,13 @@ class App
                 header('Location: /' . $this->URL[0] . '/' . $this->method);
                 return;
             }
-            
+
             $view = $this->URL[0];
-            $this->controller->index($view, $this->method);
+            if (empty($this->params)) {
+                $this->controller->index($view, $this->method);
+            } else {
+                $this->controller->index($view, $this->method, $this->params);
+            }
             
 
         // Si le controller n'existe pas, afficher la page 404 du controller _404Controller

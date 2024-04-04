@@ -25,8 +25,10 @@ class AuthorRepository extends EntityRepository
     {
         $sql = "SELECT * FROM author WHERE id = :id";
         $stmt = $this->connection->prepare($sql);
-        $stmt->execute(['id' => $id]);
-        return $stmt->fetch(PDO::FETCH_CLASS, 'Author');
+        $stmt->bindParam(':id', $id, PDO::PARAM_INT);
+        $stmt->setFetchMode( PDO::FETCH_CLASS, Author::class);
+        $stmt->execute();
+        return $stmt->fetch(PDO::FETCH_CLASS);
     }
 
     public function save($author)

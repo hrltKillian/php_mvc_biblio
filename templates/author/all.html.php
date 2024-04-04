@@ -8,7 +8,7 @@ include '../header.html.php';
 
 <?php foreach ($data as $author) : ?>
     <p>
-        <a href="/">
+        <a href="/author/one/<?= $author->getId()?>">
             <?= $author->getFirstname() ?> <?= $author->getLastname() ?>
         </a>
     </p>    
