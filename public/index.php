@@ -51,9 +51,13 @@ class App
                 } else {
                     $this->method = "all";
                 }
+                header('Location: /' . $this->URL[0] . '/' . $this->method);
+                return;
             }
+            
             $view = $this->URL[0];
             $this->controller->index($view, $this->method);
+            
 
         // Si le controller n'existe pas, afficher la page 404 du controller _404Controller
         } else {

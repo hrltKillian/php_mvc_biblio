@@ -1,5 +1,7 @@
 <?php
 
+require_once '../src/repository/AuthorRepository.php';
+
 class AuthorController extends Controller
 {
     public function index($view, $method, $data = [])
@@ -13,6 +15,8 @@ class AuthorController extends Controller
 
     public function all($view, $method, $data = [])
     {
-        $this->view($view, $method);
+        $authorRepository = new AuthorRepository();
+        $authors = $authorRepository->findAll();
+        $this->view($view, $method, $authors);
     }
 }

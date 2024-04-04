@@ -2,7 +2,7 @@
 
 class Controller
 {
-    public $ALLOWED_METHODS = ['add', 'all', 'edit'];
+    public $ALLOWED_METHODS = ['index', 'add', 'all', 'edit'];
 
     public function view($view, $method, $data = [])
     {
