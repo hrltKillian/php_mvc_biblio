@@ -35,10 +35,9 @@ class AuthorRepository extends EntityRepository
     {
         $sql = "INSERT INTO author (firstname, lastname) VALUES (:firstname, :lastname)";
         $stmt = $this->connection->prepare($sql);
-        $stmt->execute([
-            'firstname' => $author->getFirstname(),
-            'lastname' => $author->getLastname()
-        ]);
+        $stmt->bindParam(':firstname', $author->getFirstname(), PDO::PARAM_STR);
+        $stmt->bindParam(':lastname', $author->getLastname(), PDO::PARAM_STR);
+        $stmt->execute();
     }
 
     public function update($author)

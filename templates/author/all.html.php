@@ -1,10 +1,10 @@
 <?php
-include '../header.html.php';
+include '../templates/header.html.php';
 ?>
 
 <h1>Liste des auteurs :</h1>
 
-<a href="/authors/add">Ajouter un auteur</a>
+<a href="/author/add">Ajouter un auteur</a>
 
 <?php foreach ($data as $author) : ?>
     <p>

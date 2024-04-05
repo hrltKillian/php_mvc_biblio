@@ -15,7 +15,7 @@ class App
         $this->URL = $_SERVER['REQUEST_URI'];;
     }
 
-    private function getURL()
+    private function getURL() : array
     {
         $this->URL = explode('/', $this->URL);
         $this->URL = array_filter($this->URL);
@@ -27,7 +27,7 @@ class App
         return $this->URL;
     }
 
-    public function getController()
+    public function getController() : void
     {
         // Récuperer l'URL
         $this->URL = $this->getURL($this->URL);
@@ -61,18 +61,17 @@ class App
 
             $view = $this->URL[0];
             if (empty($this->params)) {
-                $this->controller->index($view, $this->method);
+                $this->controller->{$this->method}($view, $this->method);
             } else {
-                $this->controller->index($view, $this->method, $this->params);
+                $this->controller->{$this->method}($view, $this->method, $this->params);
             }
             
 
-        // Si le controller n'existe pas, afficher la page 404 du controller _404Controller
+        // Si le controller n'existe pas, afficher la page notFound du controller notFoundController
         } else {
-            require_once '../src/controllers/_404Controller.php';
-            $this->controller = '_404Controller';
-            $this->controller = new $this->controller;
-            $view = '404';
+            require_once '../src/controllers/notFoundController.php';
+            $this->controller = new notFoundController;
+            $view = 'notFound';
             $this->method = 'index';
             $this->controller->index($view, $this->method);
         }

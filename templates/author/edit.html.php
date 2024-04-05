@@ -1,5 +1,5 @@
 <?php
-include '../header.html.php';
+include '../templates/header.html.php';
 ?>
 
 <h1>Modifier un auteur</h1>
@@ -13,3 +13,5 @@ include '../header.html.php';
     <br>
     <input type="submit" value="Modifier">
 </form>
+
+<a href="/author/one/<?= $data->getId()?>">Retour</a>

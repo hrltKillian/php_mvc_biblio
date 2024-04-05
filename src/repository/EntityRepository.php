@@ -1,12 +1,14 @@
 <?php
 
 require_once __DIR__.'/../entity/Author.php';
+require_once __DIR__.'../../../public/config.php';
+
 class EntityRepository
 {
     public static function connect()
     {
-        $string = "mysql:host=localhost;dbname=librery_v2";
-        $pdo = new PDO($string, "root", "");
+        $string = "mysql:host=".DBHOST.";dbname=".DBNAME;
+        $pdo = new PDO($string, DBUSER, DBPWD);
         return $pdo;
     }
 
