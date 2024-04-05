@@ -42,6 +42,11 @@ class App
             $this->controller = ucfirst($this->URL[0]) . 'Controller';
             $this->controller = new $this->controller;
 
+            // Si l'URL ne contient pas de méthode, la méthode par défaut est vide
+            if (empty($this->URL[1])) {
+                $this->URL[1] = '';
+            }
+
             // Récuperer la méthode associée à l'URL
             $this->method = $this->URL[1];
 
