@@ -34,6 +34,7 @@ class App
         $controller = $this->URL[0];
         $controller = ucfirst($controller) . 'Controller.php';
         require '../src/controllers/Controller.php';
+        require_once '../src/repository/EntityRepository.php';
 
         // Récuperer le controller associé à l'URL
         // Si le controller existe, instancier le controller

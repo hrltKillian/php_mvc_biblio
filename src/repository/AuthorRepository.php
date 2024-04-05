@@ -1,6 +1,5 @@
 <?php
 
-require_once 'EntityRepository.php';
 class AuthorRepository extends EntityRepository
 {
     private PDO $connection;

@@ -1,6 +1,9 @@
 <?php
 
 require_once __DIR__.'/../entity/Author.php';
+require_once __DIR__.'/../entity/Book.php';
+require_once __DIR__.'/../entity/Category.php';
+require_once __DIR__.'/../entity/library.php';
 require_once __DIR__.'../../../public/config.php';
 
 class EntityRepository
