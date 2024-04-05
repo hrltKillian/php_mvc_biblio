@@ -1,7 +1,7 @@
 <?php
 abstract class Controller
 {
-    public $ALLOWED_METHODS = ['index', 'one', 'insert', 'add', 'all', 'edit'];
+    public $ALLOWED_METHODS = ['index', 'one', 'insert', 'add', 'all', 'edit', 'update', 'delete'];
 
     public function view($view, $method, $data = [])
     {

@@ -33,8 +33,9 @@ class AuthorRepository extends EntityRepository
 
     public function save($author)
     {
-        $sql = "INSERT INTO author (firstname, lastname) VALUES (:firstname, :lastname)";
+        $sql = "INSERT INTO author (id, firstname, lastname) VALUES (:id, :firstname, :lastname)";
         $stmt = $this->connection->prepare($sql);
+        $stmt->bindParam(':id', $author->getId(), PDO::PARAM_INT);
         $stmt->bindParam(':firstname', $author->getFirstname(), PDO::PARAM_STR);
         $stmt->bindParam(':lastname', $author->getLastname(), PDO::PARAM_STR);
         $stmt->execute();
@@ -44,11 +45,10 @@ class AuthorRepository extends EntityRepository
     {
         $sql = "UPDATE author SET firstname = :firstname, lastname = :lastname WHERE id = :id";
         $stmt = $this->connection->prepare($sql);
-        $stmt->execute([
-            'id' => $author->getId(),
-            'firstname' => $author->getFirstname(),
-            'lastname' => $author->getLastname()
-        ]);
+        $stmt->bindParam(':id', $author->getId(), PDO::PARAM_INT);
+        $stmt->bindParam(':firstname', $author->getFirstname(), PDO::PARAM_STR);
+        $stmt->bindParam(':lastname', $author->getLastname(), PDO::PARAM_STR);
+        $stmt->execute();
     }
 
     public function delete($id)
@@ -57,4 +57,5 @@ class AuthorRepository extends EntityRepository
         $stmt = $this->connection->prepare($sql);
         $stmt->execute(['id' => $id]);
     }
+
 }
