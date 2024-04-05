@@ -1,6 +1,6 @@
 <?php
 
-class Librery 
+class Library 
 {
     private int $id;
     private string $name;
