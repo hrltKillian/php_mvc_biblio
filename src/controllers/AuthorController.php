@@ -1,6 +1,7 @@
 <?php
 
 require_once '../src/repository/AuthorRepository.php';
+require_once '../src/repository/BookRepository.php';
 
 session_start();
 
@@ -10,6 +11,11 @@ class AuthorController extends Controller
     {
         $authorRepository = new AuthorRepository();
         $authors = $authorRepository->findAll();
+        $books = new BookRepository();
+        foreach ($authors as $author) {
+            $author->setBooks($books->findByAuthor($author->getId()));
+        }
+
         $this->view($view, $method, $authors);
     }
 
@@ -17,6 +23,9 @@ class AuthorController extends Controller
     {
         $authorRepository = new AuthorRepository();
         $author = $authorRepository->findById($data[0]);
+        $books = new BookRepository();
+        $author->setBooks($books->findByAuthor($author->getId()));
+        
         $author = [$author];
         $this->view($view, $method, $author);
     }

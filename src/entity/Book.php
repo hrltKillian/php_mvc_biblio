@@ -5,6 +5,7 @@ class Book
     private int $id;
     private string $title;
     private int $author_id;
+    private int $category_id;
 
     public function getId()
     {
@@ -38,6 +39,18 @@ class Book
     public function setAuthorId (int $author_id): static
     {
         $this->author_id = $author_id;
+
+        return $this;
+    }
+
+    public function getCategory_id()
+    {
+        return $this->category_id;
+    }
+
+    public function setCategory_id($category_id)
+    {
+        $this->category_id = $category_id;
 
         return $this;
     }

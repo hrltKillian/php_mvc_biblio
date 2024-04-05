@@ -5,6 +5,7 @@ class Author
     private int $id;
     private string $firstname;
     private string $lastname;
+    private array $books = [];
     
 
     public function getId()
@@ -43,4 +44,24 @@ class Author
         return $this;
     }
 
+
+    public function getBooks(int $id = null)
+    {
+        if ($id) {
+            return $this->books[$id];
+        }
+        return $this->books;
+    }
+
+    public function getBooksLength()
+    {
+        return count($this->books);
+    }
+
+    public function setBooks($books)
+    {
+        $this->books = array_merge($this->books, $books);
+
+        return $this;
+    }
 }

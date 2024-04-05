@@ -9,7 +9,7 @@ include '../templates/header.html.php';
 <?php foreach ($data as $author) : ?>
     <p>
         <a href="/author/one/<?= $author->getId()?>">
-            <?= $author->getId() ?> <?= $author->getFirstname() ?> <?= $author->getLastname() ?>
+            <?= $author->getId() ?> <?= $author->getFirstname() ?> <?= $author->getLastname() ?> - Livres : <?= $author->getBooksLength(); ?>
         </a>
     </p>    
 <?php endforeach; ?>

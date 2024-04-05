@@ -12,4 +12,14 @@ class BookController extends Controller
         $books = $bookRepository->findAll();
         $this->view($view, $method, $books);
     }
+
+    public function one(string $view, string $method, array $data = [])
+    {
+        $bookRepository = new BookRepository();
+        $book = $bookRepository->findById($data[0]);
+        $book = [$book];
+        $this->view($view, $method, $book);
+    }
+
+
 }
