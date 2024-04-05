@@ -6,8 +6,8 @@ class App
 {
     public $URL;
     public $controller = 'Home';
-    public $method = 'index';
-    public $params = [];
+    public string $method = 'index';
+    public array $params = [];
 
 
     public function __construct($URL)
@@ -75,9 +75,6 @@ class App
             $this->method = 'index';
             $this->controller->index($view, $this->method);
         }
-
-        #$controller = new $this->controller;
-        #call_user_func_array([$controller, $this->method], []);
     }
 }
 

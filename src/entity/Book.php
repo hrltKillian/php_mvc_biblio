@@ -2,8 +2,8 @@
 
 class Book 
 {
-    private $id;
-    private $title;
+    private int $id;
+    private string $title;
 
     public function getId()
     {

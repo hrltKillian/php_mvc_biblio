@@ -17,6 +17,7 @@ class AuthorController extends Controller
     {
         $authorRepository = new AuthorRepository();
         $author = $authorRepository->findById($data[0]);
+        $author = [$author];
         $this->view($view, $method, $author);
     }
 
@@ -74,6 +75,21 @@ class AuthorController extends Controller
         $author->setFirstname($_POST['firstname']);
         $author->setLastname($_POST['lastname']);
         $authorRepository->save($author);
+        header('Location: /author/all');
+    }
+
+    public function delete(string $view, string $method, array $data = [])
+    {
+        $authorRepository = new AuthorRepository();
+        $author = $authorRepository->findById($data[0]);
+        $author = [$author];
+        $this->view($view, $method, $author);
+    }
+
+    public function deleted()
+    {
+        $authorRepository = new AuthorRepository();
+        $authorRepository->delete($_POST['id']);
         header('Location: /author/all');
     }
 

@@ -2,8 +2,8 @@
 
 class Librery 
 {
-    private $id;
-    private $name;
+    private int $id;
+    private string $name;
 
     public function getId()
     {

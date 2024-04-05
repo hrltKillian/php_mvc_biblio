@@ -2,9 +2,9 @@
 
 class Author
 {
-    private $id;
-    private $firstname;
-    private $lastname;
+    private int $id;
+    private string $firstname;
+    private string $lastname;
     
 
     public function getId()

@@ -3,7 +3,7 @@
 require_once 'EntityRepository.php';
 class AuthorRepository extends EntityRepository
 {
-    private $connection;
+    private PDO $connection;
 
     public function __construct()
     {
@@ -13,7 +13,7 @@ class AuthorRepository extends EntityRepository
     /**
      * @return Author[]
      */
-    public function findAll()
+    public function findAll() : array
     {
         $sql = "SELECT * FROM author";
         $stmt = $this->connection->prepare($sql);
@@ -21,7 +21,7 @@ class AuthorRepository extends EntityRepository
         return $stmt->fetchAll(PDO::FETCH_CLASS, Author::class);
     }
 
-    public function findById($id)
+    public function findById(int $id) : Author
     {
         $sql = "SELECT * FROM author WHERE id = :id";
         $stmt = $this->connection->prepare($sql);
@@ -31,7 +31,7 @@ class AuthorRepository extends EntityRepository
         return $stmt->fetch(PDO::FETCH_CLASS);
     }
 
-    public function save($author)
+    public function save(Author $author) : void
     {
         $sql = "INSERT INTO author (id, firstname, lastname) VALUES (:id, :firstname, :lastname)";
         $stmt = $this->connection->prepare($sql);
@@ -41,7 +41,7 @@ class AuthorRepository extends EntityRepository
         $stmt->execute();
     }
 
-    public function update($author)
+    public function update(Author $author) : void
     {
         $sql = "UPDATE author SET firstname = :firstname, lastname = :lastname WHERE id = :id";
         $stmt = $this->connection->prepare($sql);
@@ -51,11 +51,12 @@ class AuthorRepository extends EntityRepository
         $stmt->execute();
     }
 
-    public function delete($id)
+    public function delete(int $id) : void
     {
         $sql = "DELETE FROM author WHERE id = :id";
         $stmt = $this->connection->prepare($sql);
-        $stmt->execute(['id' => $id]);
+        $stmt->bindParam(':id', $id, PDO::PARAM_INT);
+        $stmt->execute();
     }
 
 }
