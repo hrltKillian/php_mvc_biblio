@@ -27,6 +27,11 @@ class BookRepository extends EntityRepository
         $stmt->bindParam(':id', $id, PDO::PARAM_INT);
         $stmt->setFetchMode( PDO::FETCH_CLASS, Book::class);
         $stmt->execute();
+        if ($stmt->rowCount() === 0) {
+            $notFoundController = new NotFoundController();
+            $notFoundController->index("a", "b");
+            exit();
+        }
         return $stmt->fetch(PDO::FETCH_CLASS);
     }
 

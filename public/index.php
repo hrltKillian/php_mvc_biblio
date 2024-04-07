@@ -35,6 +35,7 @@ class App
         $controller = ucfirst($controller) . 'Controller.php';
         require '../src/controllers/Controller.php';
         require_once '../src/repository/EntityRepository.php';
+        require_once '../src/controllers/notFoundController.php';
 
         // Récuperer le controller associé à l'URL
         // Si le controller existe, instancier le controller
@@ -75,7 +76,6 @@ class App
 
         // Si le controller n'existe pas, afficher la page notFound du controller notFoundController
         } else {
-            require_once '../src/controllers/notFoundController.php';
             $this->controller = new notFoundController;
             $view = 'notFound';
             $this->method = 'index';
