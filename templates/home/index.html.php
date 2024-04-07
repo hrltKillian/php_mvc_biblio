@@ -2,6 +2,8 @@
 include '../templates/header.html.php';
 ?>
 
-<body>
-    <h1>Home page du turfu</h1>
-</body>
+<h1 class="card-title">Accueil</h1>
+
+<?php
+include '../templates/footer.html.php';
+?>

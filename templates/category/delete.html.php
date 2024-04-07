@@ -2,16 +2,20 @@
 include '../templates/header.html.php';
 ?>
 
-<body>
-    <h1>Supprimer une catégorie</h1>
+<h1>Supprimer une catégorie</h1>
 
-    <p>Êtes-vous sûr de vouloir supprimer cette catégorie ?</p>
+<p>Êtes-vous sûr de vouloir supprimer cette catégorie ?</p>
 
-    <p><?= $data[0]->getName() ?></p>
+<p class="text-bg-danger p-3">Tous les livres contenant cette catégorie seront eux aussi supprimer !</p>
 
-    <form action="/category/deleted" method="post">
-        <input type="hidden" name="id" value="<?= $data[0]->getId() ?>">
-        <input type="submit" value="Supprimer">
-        <a href="/category/one/<?= $data[0]->getId() ?>">Annuler</a>
-    </form>
-</body>
+<h2 class="m-5"><?= $data[0]->getName() ?></h2>
+
+<form action="/category/deleted" method="post">
+    <input type="hidden" name="id" value="<?= $data[0]->getId() ?>">
+    <input class="btn btn-danger mb-3" type="submit" value="Supprimer">
+    <a class="btn btn-secondary mb-3" href="/category/one/<?= $data[0]->getId() ?>">Annuler</a>
+</form>
+
+<?php
+include '../templates/footer.html.php';
+?>

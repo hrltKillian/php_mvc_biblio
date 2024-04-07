@@ -2,16 +2,18 @@
 include '../templates/header.html.php';
 ?>
 
-<body>
-    <h1>Liste des auteurs :</h1>
+<h1>Liste des auteurs :</h1>
 
-    <a href="/author/add">Ajouter un auteur</a>
+<a class="link-success link-offset-2 link-offset-3-hover link-underline link-underline-opacity-0 link-underline-opacity-75-hover" href="/author/add">Ajouter un auteur</a>
 
-    <?php foreach ($data as $author) : ?>
-        <p>
-            <a href="/author/one/<?= $author->getId()?>">
-                <?= $author->getId() ?> <?= $author->getFirstname() ?> <?= $author->getLastname() ?> - Livres : <?= $author->getBooksLength(); ?>
-            </a>
-        </p>    
-    <?php endforeach; ?>
-</body>
+<?php foreach ($data as $author) : ?>
+    <p>
+        <a class="link-underline-opacity-0link-offset-2 link-underline link-underline-opacity-0" href="/author/one/<?= $author->getId()?>">
+            <?= $author->getId() ?> <?= $author->getFirstname() ?> <?= $author->getLastname() ?> - Livres : <?= $author->getBooksLength(); ?>
+        </a>
+    </p>    
+<?php endforeach; ?>
+
+<?php
+include '../templates/footer.html.php';
+?>
