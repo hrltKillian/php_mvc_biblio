@@ -86,7 +86,3 @@ class App
 
 $app = new App($_SERVER['REQUEST_URI']);
 $app->getController();
-
-echo '<pre>';
-print_r($app);
-echo '</pre>';

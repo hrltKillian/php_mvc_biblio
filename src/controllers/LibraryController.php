@@ -87,6 +87,7 @@ class LibraryController extends Controller
     public function deleted()
     {
         $libraryRepository = new LibraryRepository();
+        $libraryRepository->deleteByLibraryId($_POST['id']);
         $libraryRepository->delete($_POST['id']);
         header('Location: /library/all');
     }

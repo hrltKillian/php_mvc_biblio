@@ -1,6 +1,8 @@
 <?php
 
 require_once '../src/repository/CategoryRepository.php';
+require_once '../src/repository/BookRepository.php';
+require_once '../src/repository/LibraryRepository.php';
 
 session_start();
 
@@ -87,6 +89,10 @@ class CategoryController extends Controller
     public function deleted()
     {
         $categoryRepository = new CategoryRepository();
+        $bookRepository = new BookRepository();
+        $libraryRepository = new LibraryRepository();
+        $libraryRepository->deleteByCategoryId($_POST['id']);
+        $bookRepository->deleteByCategoryId($_POST['id']);
         $categoryRepository->delete($_POST['id']);
         header('Location: /category/all');
     }

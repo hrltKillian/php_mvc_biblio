@@ -6,6 +6,9 @@ class Book
     private string $title;
     private int $author_id;
     private int $category_id;
+    private ?Author $author;
+    private ?Category $category;
+    private ?array $library = [];
 
     public function getId()
     {
@@ -43,14 +46,63 @@ class Book
         return $this;
     }
 
-    public function getCategory_id()
+    public function getAuthor()
+    {
+        return $this->author;
+    }
+
+    public function setAuthor($author)
+    {
+        $this->author = $author;
+
+        return $this;
+    }
+
+    public function getCategoryId()
     {
         return $this->category_id;
     }
 
-    public function setCategory_id($category_id)
+    public function setCategoryId($category_id)
     {
         $this->category_id = $category_id;
+
+        return $this;
+    }
+
+    public function getCategory()
+    {
+        return $this->category;
+    }
+
+    public function setCategory($category)
+    {
+        $this->category = $category;
+
+        return $this;
+    }
+
+    public function getLibrary(int $id = null)
+    {
+        if ($id) {
+            return $this->library[$id];
+        }
+        return $this->library;
+    }
+
+    public function getAllLibrary()
+    {
+        return $this->library;
+    }
+
+    public function getLibraryLength()
+    {
+        return count($this->library);
+    }
+
+    public function setLibrary($library)
+    {
+        $this->library = $library;
 
         return $this;
     }

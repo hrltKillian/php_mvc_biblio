@@ -2,6 +2,7 @@
 
 require_once '../src/repository/AuthorRepository.php';
 require_once '../src/repository/BookRepository.php';
+require_once '../src/repository/LibraryRepository.php';
 
 session_start();
 
@@ -98,6 +99,10 @@ class AuthorController extends Controller
     public function deleted()
     {
         $authorRepository = new AuthorRepository();
+        $bookRepository = new BookRepository();
+        $libraryRepository = new LibraryRepository();
+        $libraryRepository->deleteByAuthorID($_POST['id']);
+        $bookRepository->deleteByAuthorID($_POST['id']);
         $authorRepository->delete($_POST['id']);
         header('Location: /author/all');
     }
