@@ -4,7 +4,7 @@ include '../templates/header.html.php';
 
 <h1>Ajouter un livre</h1>
 
-<form class="form-check form-switch" action="/book/insert" method="post">
+<form class="form-check" action="/book/insert" method="post">
     <label class="form-label" for="title">Titre :</label>
     <input class="form-control" type="text" name="title" id="title">
     <br>
@@ -30,10 +30,11 @@ include '../templates/header.html.php';
     <?php endforeach; ?>
     <br>
     <input class="btn btn-primary my-3" type="submit" value="Ajouter">
-    <a class="btn btn-secondary my-3" href="book/all">Retour</a>
 </form>
 
 <p class="text-danger"><?=$data[0]?></p>
+
+<a class="btn btn-secondary my-3" href="book/all">Retour</a>
 
 <?php
 include '../templates/footer.html.php';

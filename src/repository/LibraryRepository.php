@@ -27,7 +27,6 @@ class LibraryRepository extends EntityRepository
         $stmt->bindParam(':id', $id, PDO::PARAM_INT);
         $stmt->setFetchMode( PDO::FETCH_CLASS, Library::class);
         $stmt->execute();
-        $stmt->fetch(PDO::FETCH_CLASS);
         if ($stmt->rowCount() === 0) {
             $notFoundController = new NotFoundController();
             $notFoundController->index("a", "b");

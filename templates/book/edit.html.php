@@ -4,7 +4,7 @@ include '../templates/header.html.php';
 
 <h1>Modifier un livre</h1>
 
-<form action="/book/update/<?= $data[1]->getId() ?>" method="post">
+<form class="form-check" action="/book/update/<?= $data[1]->getId() ?>" method="post">
     <label class="form-label" for="title">Titre :</label>
     <input class="form-control" type="text" name="title" id="title" value="<?= $data[1]->getTitle() ?>">
     <br>
@@ -26,18 +26,18 @@ include '../templates/header.html.php';
     <?php
     $counter = 0;
     foreach ($data[4] as $library) : ?>
-        <input class="btn-check" type="checkbox" name="library[]" id="library" value="<?= $library->getId() ?>"
-        <?php foreach ($data[1]->getLibrary() as $bookLibrary) : ?>
-            <?php if ($bookLibrary->getId() == $library->getId()) : ?>
-                checked
-            <?php endif; ?>
-        <?php endforeach; ?>
+        <input class="btn-check" type="checkbox" name="library[]" id="<?=$library->getName()?>" value="<?= $library->getId() ?>"
+        <?php foreach ($data[1]->getLibrary() as $bookLibrary) {
+             if ($bookLibrary->getId() == $library->getId()) {
+                    echo 'checked';
+             }
+            } ?>
         >
         <label class="btn btn-outline-primary" for="<?=$library->getName()?>"><?=$library->getName()?></label>
-        <?= $library->getName() ?>
     <?php endforeach; ?>
-    
+
     <br>
+
     <input type="hidden" name="id" value="<?= $data[1]->getId() ?>">
     <input class="btn btn-primary my-3" type="submit" value="Modifier">
 </form>
