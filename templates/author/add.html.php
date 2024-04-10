@@ -12,10 +12,11 @@ include '../templates/header.html.php';
     <input class="form-control" type="text" name="lastname" id="lastname">
     <br>
     <input class="btn btn-primary mb-3" type="submit" value="Ajouter">
-    <a class="btn btn-secondary mb-3" href="author/all">Retour</a>
 </form>
 
 <p class="text-danger"><?=$data[0]?></p>
+
+<a class="btn btn-secondary mb-3" href="/author/all">Retour</a>
 
 <?php
 include '../templates/footer.html.php';

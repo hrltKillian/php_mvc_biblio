@@ -44,7 +44,7 @@ include '../templates/header.html.php';
 
 <p class="text-danger"><?= $data[0] ?></p>
 
-<a class="btn btn-secondary my-3" href="book/all">Retour</a>
+<a class="btn btn-secondary my-3" href="/book/all">Retour</a>
 
 <?php
 include '../templates/footer.html.php';

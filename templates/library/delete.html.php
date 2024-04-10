@@ -13,8 +13,9 @@ include '../templates/header.html.php';
 <form action="/library/deleted" method="post">
     <input type="hidden" name="id" value="<?= $data[0]->getId() ?>">
     <input class="btn btn-danger mb-3" type="submit" value="Supprimer">
-    <a class="btn btn-secondary mb-3" href="/library/one/<?= $data[0]->getId() ?>">Annuler</a>
 </form>
+
+<a class="btn btn-secondary mb-3" href="/library/one/<?= $data[0]->getId() ?>">Annuler</a>
 
 <?php
 include '../templates/footer.html.php';
